@@ -2,6 +2,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Start from "./pages/Start";
 import Quiz from "./pages/Quiz";
 import Results from "./pages/Results";
+import QuizContext from "./QuizContext";
+import { useState } from "react";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +21,15 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+
+  const [selectedCategoryId, setSelectedCategoryId] = useState<number | undefined>(undefined);
+  const value = { selectedCategoryId, setSelectedCategoryId };
+
+  return (
+    <QuizContext.Provider value={value}>
+      <RouterProvider router={router} />
+    </QuizContext.Provider>
+  );
 }
 
 export default App;
