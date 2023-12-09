@@ -6,7 +6,7 @@ interface SkipProps {
   setCurrentQuestion: any;
 }
 
-export default function Skip({ currentQuestion, setCurrentQuestion }: SkipProps) {
+export default function Skip({ currentQuestion, setCurrentQuestion, ...props }: SkipProps) {
 
   const { selectedModeId } = useContext(QuizContext);
 
@@ -19,6 +19,7 @@ export default function Skip({ currentQuestion, setCurrentQuestion }: SkipProps)
 
   return (
     <button
+      {...props}
       className="flex w-30 bg-white border-blue-500 text-blue-500 border-2 rounded-md px-4 py-2"
       onClick={handleClick}
     >

@@ -84,6 +84,7 @@ export default function QuestionSection() {
       </div>
       <div className='flex gap-x-2'>
         <Skip
+          id='skipBtn'
           currentQuestion={currentQuestion}
           setCurrentQuestion={setCurrentQuestion}
         />
