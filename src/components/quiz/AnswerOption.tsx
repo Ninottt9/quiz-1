@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface AnswerOptionProps {
-  name: string;
+  name: string | null;
 }
 
 export default function AnswerOption({ name }: AnswerOptionProps) {
