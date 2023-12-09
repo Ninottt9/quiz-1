@@ -1,19 +1,45 @@
+import { useState, useEffect } from 'react';
+
 import AnswerOption from '../components/quiz/AnswerOption';
 import Answer from '../components/quiz/Answer';
 import Skip from '../components/quiz/Skip';
 import Header from '../components/quiz/Header';
+import { getQuestions } from '../api/questions';
 
 export default function Quiz() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [questions, setQuestions] = useState([]);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+
+  useEffect(() => {
+    const getQuestionsBox = async () => {
+      setIsLoading(true);
+      const data = await getQuestions(10, 'Computers');
+      console.log({data})
+      setQuestions(data);
+    };
+
+    try {
+      if(!isLoading && questions.length === 0)
+      getQuestionsBox();
+    }
+    catch (e) {
+      console.log(e);
+    }
+  }, [isLoading, questions]);
+
+  console.log(questions)
+
   return (
     <section className='flex flex-col items-center gap-y-6'>
       <Header />
       <img src='' alt='IMAGE' /> {/*TODO  image*/}
-      <h1 className='mt-15 font-bold'>Pytanie</h1>
+      <h1 className='mt-15 font-bold'>{questions.length > 0 ? questions[currentQuestion]['question'] : null}</h1>
       <div className='grid grid-cols-2 gap-2'>
-        <AnswerOption name='option1' />
-        <AnswerOption name='option2' />
-        <AnswerOption name='option3' />
-        <AnswerOption name='option4' />
+        <AnswerOption name={questions.length > 0 ? questions[currentQuestion]['correct_answer'] : null} />
+        <AnswerOption name={questions.length > 0 ? questions[currentQuestion]['incorrect_answers'][0] : null} />
+        <AnswerOption name={questions.length > 0 ? questions[currentQuestion]['incorrect_answers'][1] : null} />
+        <AnswerOption name={questions.length > 0 ? questions[currentQuestion]['incorrect_answers'][2] : null} />
       </div>
       <div className='flex gap-x-2'>
         <Skip />

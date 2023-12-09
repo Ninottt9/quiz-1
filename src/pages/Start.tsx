@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import QuizContext from '../QuizContext';
-import { button_names } from '../categories';
+import { categories } from '../categories';
 
 export default function Start() {
 
@@ -14,7 +14,7 @@ export default function Start() {
       <div>
         <h1 className="mt-10 font-bold">Wybierz kategorie</h1>
       </div>
-      {button_names.map((name, nameIndex) => {
+      {categories.map((name, nameIndex) => {
         return (
           <button
             key={`${name}${nameIndex}`}

@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import QuizContext from '../QuizContext';
 import ModeScreen from './ModeScreen';
 import Start from './Start';
-import { button_names } from '../categories';
+import { categories } from '../categories';
 
 export default function StartContainer() {
   const { selectedCategoryId } = useContext(QuizContext);
@@ -12,7 +12,7 @@ export default function StartContainer() {
       {selectedCategoryId === undefined ? (
         <Start />
       ) : (
-        <ModeScreen topic={button_names[selectedCategoryId]} isOpen={true} />
+        <ModeScreen topic={categories[selectedCategoryId]} isOpen={true} />
       )}
     </section>
   );
