@@ -1,5 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Start from "./pages/Start";
+import StartContainer from "./pages/StartContainer";
 import Quiz from "./pages/Quiz";
 import Results from "./pages/Results";
 import QuizContext from "./QuizContext";
@@ -8,7 +8,7 @@ import { useState } from "react";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Start />,
+    element: <StartContainer />,
   },
   {
     path: "/quiz",
