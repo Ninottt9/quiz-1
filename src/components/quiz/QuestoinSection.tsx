@@ -60,7 +60,7 @@ export default function QuestionSection() {
         />
       </div>
       <div className='flex gap-x-2'>
-        <Skip />
+        <Skip currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion}/>
         <Answer />
       </div>
     </>
