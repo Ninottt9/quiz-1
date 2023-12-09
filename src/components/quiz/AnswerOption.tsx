@@ -4,9 +4,11 @@ interface AnswerOptionProps {
   name: string | null;
 }
 
-export default function AnswerOption({ name }: AnswerOptionProps) {
+export default function AnswerOption({ name, ...props }: AnswerOptionProps) {
   return (
-    <button className='flex w-40 bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
+    <button className='flex w-40 bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+      {...props}
+    >
       {name}
     </button>
   );

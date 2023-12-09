@@ -8,6 +8,8 @@ export default function QuestionSection() {
   const [isLoading, setIsLoading] = useState(false);
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState('');
+  const [answers, setAnswers] = useState({});
 
   useEffect(() => {
     const getQuestionsBox = async () => {
@@ -19,9 +21,13 @@ export default function QuestionSection() {
     try {
       if (!isLoading && questions.length === 0) getQuestionsBox();
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   }, [isLoading, questions]);
+
+  const handlQuestionClick = (answer) => {
+    setSelectedAnswer(answer);
+  };
 
   return (
     <>
@@ -35,12 +41,20 @@ export default function QuestionSection() {
               ? questions[currentQuestion]['correct_answer']
               : null
           }
+          onClick={() =>
+            handlQuestionClick(questions[currentQuestion]['correct_answer'])
+          }
         />
         <AnswerOption
           name={
             questions.length > 0
               ? questions[currentQuestion]['incorrect_answers'][0]
               : null
+          }
+          onClick={() =>
+            handlQuestionClick(
+              questions[currentQuestion]['incorrect_answers'][0]
+            )
           }
         />
         <AnswerOption
@@ -49,6 +63,11 @@ export default function QuestionSection() {
               ? questions[currentQuestion]['incorrect_answers'][1]
               : null
           }
+          onClick={() =>
+            handlQuestionClick(
+              questions[currentQuestion]['incorrect_answers'][1]
+            )
+          }
         />
         <AnswerOption
           name={
@@ -56,11 +75,26 @@ export default function QuestionSection() {
               ? questions[currentQuestion]['incorrect_answers'][2]
               : null
           }
+          onClick={() =>
+            handlQuestionClick(
+              questions[currentQuestion]['incorrect_answers'][2]
+            )
+          }
         />
       </div>
       <div className='flex gap-x-2'>
-        <Skip currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion}/>
-        <Answer />
+        <Skip
+          currentQuestion={currentQuestion}
+          setCurrentQuestion={setCurrentQuestion}
+        />
+        <Answer
+          onClick={() => {
+            setCurrentQuestion((prevQuestion) => prevQuestion + 1);
+            setAnswers((prevAnswers) => {
+              return { ...prevAnswers, [currentQuestion]: selectedAnswer };
+            });
+          }}
+        />
       </div>
     </>
   );
