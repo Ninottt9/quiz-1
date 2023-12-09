@@ -11,6 +11,9 @@ export default function Start() {
 
   return (
     <section className='flex flex-col gap-y-5 items-center'>
+      <div>
+        <h1 className="mt-10 font-bold">Wybierz kategorie</h1>
+      </div>
       {button_names.map((name, nameIndex) => {
         return (
           <button
