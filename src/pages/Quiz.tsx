@@ -1,7 +1,7 @@
-import AnswerOption from '../comonents/quiz/AnswerOption';
-import Answer from '../comonents/quiz/Answer';
-import Skip from '../comonents/quiz/Skip';
-import Header from '../comonents/quiz/Header';
+import AnswerOption from '../components/quiz/AnswerOption';
+import Answer from '../components/quiz/Answer';
+import Skip from '../components/quiz/Skip';
+import Header from '../components/quiz/Header';
 
 export default function Quiz() {
   return (
