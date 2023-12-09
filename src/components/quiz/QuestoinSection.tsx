@@ -13,7 +13,6 @@ export default function QuestionSection() {
     const getQuestionsBox = async () => {
       setIsLoading(true);
       const data = await getQuestions(10, 'Computers');
-      console.log({ data });
       setQuestions(data);
     };
 

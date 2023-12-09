@@ -9,7 +9,6 @@ interface SkipProps {
 export default function Skip({ currentQuestion, setCurrentQuestion }: SkipProps) {
 
   const { selectedModeId } = useContext(QuizContext);
-  console.log({selectedModeId})
 
   const handleClick = () => {
     if (currentQuestion == selectedModeId - 1) 

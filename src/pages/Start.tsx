@@ -3,28 +3,31 @@ import QuizContext from '../QuizContext';
 import { categories } from '../categories';
 
 export default function Start() {
-
-  const {selectedCategoryId, setSelectedCategoryId} = useContext(QuizContext);
+  const { selectedCategoryId, setSelectedCategoryId } = useContext(QuizContext);
   const handleClick = (nameIndex: number) => {
     setSelectedCategoryId(nameIndex);
-  }
+  };
 
   return (
     <section className='flex flex-col gap-y-5 items-center'>
       <div>
-        <h1 className="mt-10 font-bold">Wybierz kategorie</h1>
+        <h1 className='mt-10 font-bold'>Wybierz kategorie</h1>
       </div>
-      {categories.map((name, nameIndex) => {
-        return (
-          <button
-            key={`${name}${nameIndex}`}
-            className='flex w-40 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
-            onClick={() => {handleClick(nameIndex)}}
-          >
-            {name}
-          </button>
-        );
-      })}
+      <div className='grid grid-cols-2 gap-5'>
+        {categories.map((name, nameIndex) => {
+          return (
+            <button
+              key={`${name}${nameIndex}`}
+              className='flex w-40 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+              onClick={() => {
+                handleClick(nameIndex);
+              }}
+            >
+              {name}
+            </button>
+          );
+        })}
+      </div>
       <button className='flex w-40 bg-blue-300 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
         Start
       </button>
