@@ -5,7 +5,7 @@ import Start from './Start';
 import { button_names } from '../categories';
 
 export default function StartContainer() {
-  const { selectedCategoryId, setSelectedCategoryId } = useContext(QuizContext);
+  const { selectedCategoryId } = useContext(QuizContext);
 
   return (
     <section className='flex flex-col gap-y-5 items-center'>

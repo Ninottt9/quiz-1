@@ -23,7 +23,8 @@ const router = createBrowserRouter([
 function App() {
 
   const [selectedCategoryId, setSelectedCategoryId] = useState<number | undefined>(undefined);
-  const value = { selectedCategoryId, setSelectedCategoryId };
+  const [selectedModeId, setSelectedModeId] = useState<number | undefined>(undefined);
+  const value = { selectedCategoryId, setSelectedCategoryId, selectedModeId, setSelectedModeId };
 
   return (
     <QuizContext.Provider value={value}>
