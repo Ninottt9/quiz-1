@@ -23,7 +23,7 @@ export default function ModeScreen(props: {topic: string, isOpen: boolean}) {
             <div>
                 {questionNumbers.map((number) => {
                     return <button key={`${number}`}
-                     className="flex w-40 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                     className="flex w-40 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-5 rounded"
                     onClick={() => {handleClick(number)}}
                     >{number} pytań</button>;
                 })}
